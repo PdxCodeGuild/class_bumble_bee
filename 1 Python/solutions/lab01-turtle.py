@@ -9,5 +9,7 @@ while i < 7:
     left(90)
     i = i + 1
 
+
+
 done()
 

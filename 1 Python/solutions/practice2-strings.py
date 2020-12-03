@@ -78,10 +78,6 @@ def latest_letter(word):
     #         highest = char
     # return highest
     
-
-
-
-
 print(latest_letter('Pneumonoultramicroscopicsilicovolcanoconiosis')) # v
 
 # print(latest_letter('aZ')) # a

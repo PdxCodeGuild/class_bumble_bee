@@ -201,7 +201,7 @@ keyword.kwlist
 - [Codecademy - Python](https://www.codecademy.com/learn/learn-python-3)
 - [codewars.com](https://www.codewars.com/?language=python)
 - [CodingBat](https://codingbat.com/python)
-- [Py](https://www.downloadpy.com/): an app for Android and iOS
+- [Py](https://www.getpy.com/mobile): an app for Android and iOS
 - [practicepython.org](http://www.practicepython.org/)
 - [codingbat.com exercises](http://codingbat.com/python)
 - [w3resource.com exercises](http://www.w3resource.com/python-exercises/)

@@ -36,7 +36,6 @@ print()
 # for i in range(len(s)):
 #     print(i, s[i])
 
-exit()
 
 import random
 import string

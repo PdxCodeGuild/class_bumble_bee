@@ -168,7 +168,7 @@ def common_elements(nums1, nums2):
 
 
 
-
+# matrix visualization
 # https://docs.google.com/spreadsheets/d/1Qnije7G1O_AvXHsh1EtRC8EiALd7T4DmHVjYasVKV6A/edit?usp=sharing
 
 def advent_problem1(nums):
@@ -176,10 +176,15 @@ def advent_problem1(nums):
     # if a + b == 2020
     #     return a * b
 
+    # the problem with this one - adding a number to itself
+    # [5, 6, 2, 3] -> 5+5, 6+6
     # for num1 in nums:
     #     for num2 in nums:
-    #         print(str(num1) + '+' + str(num2))
+    #         if num1 + num2 == 2020:
+    #             print(str(num1) + '+' + str(num2))
     
+    # the problem with this one - you could have the same number twice
+    # [5, 6, 5, 3] -> you wouldn't test 5+5
     # for num1 in nums:
     #     for num2 in nums:
     #         if num1 != num2:
@@ -204,17 +209,204 @@ def advent_problem1(nums):
 # nums = [1010, 800, 600, 1010, 200]
 # print(advent_problem1(nums)) # 1020100
 
-nums = [1974, 1773, 1841, 1932, 1951, 1852, 2000, 1988, 1998, 1670, 969, 2008, 1713, 2007, 1916, 1286, 1652, 1821, 1730, 2002, 1761, 1656, 814, 1999, 2010, 1936, 1794, 1905, 1250, 1920, 1986, 1709, 1914, 1681, 1820, 1982, 1961, 1931, 1331, 1923, 1972, 1631, 1643, 1719, 1926, 1994, 1952, 1981, 1847, 1774, 1296, 1946, 873, 2005, 173, 2006, 1960, 1872, 1894, 1695, 1769, 1800, 1734, 1675, 1860, 1383, 1947, 1768, 1827, 1877, 1721, 1738, 384, 1996, 1958, 1909, 1639, 1831, 1212, 1627, 1699, 1661, 1653, 1748, 1919, 1983, 1223, 1690, 1948, 1218, 1971, 1969, 1753, 1957, 1977, 1943, 1978, 1778, 1937, 1868, 1641, 1979, 1854, 1959, 1739, 2004, 1964, 760, 1890, 1701, 1940, 1840, 1817, 1966, 1799, 1941, 1934, 1929, 1962, 1691, 1927, 1764, 1945, 795, 1993, 1804, 1693, 1970, 1728, 1818, 1545, 1992, 1965, 1786, 2009, 1980, 1698, 1647, 1935, 1880, 1921, 1904, 1953, 1871, 1671, 1826, 1989, 1950, 1791, 1990, 1949, 1301, 1975, 1968, 1895, 1208, 1424, 1985, 1665, 1685, 1942, 1669, 64, 1832, 1995, 1987, 1955, 352, 1984, 1925, 1891, 1933, 1679, 2001, 1930, 1991, 1227, 1973, 1723, 1683, 132, 1718, 1944, 1908, 1900, 1657, 1954, 92, 1997, 1938, 1976, 1747, 1226, 1782, 1963, 1746, 1540, 1759, 1939, 1743]
-print(advent_problem1(nums))
+# nums = [1974, 1773, 1841, 1932, 1951, 1852, 2000, 1988, 1998, 1670, 969, 2008, 1713, 2007, 1916, 1286, 1652, 1821, 1730, 2002, 1761, 1656, 814, 1999, 2010, 1936, 1794, 1905, 1250, 1920, 1986, 1709, 1914, 1681, 1820, 1982, 1961, 1931, 1331, 1923, 1972, 1631, 1643, 1719, 1926, 1994, 1952, 1981, 1847, 1774, 1296, 1946, 873, 2005, 173, 2006, 1960, 1872, 1894, 1695, 1769, 1800, 1734, 1675, 1860, 1383, 1947, 1768, 1827, 1877, 1721, 1738, 384, 1996, 1958, 1909, 1639, 1831, 1212, 1627, 1699, 1661, 1653, 1748, 1919, 1983, 1223, 1690, 1948, 1218, 1971, 1969, 1753, 1957, 1977, 1943, 1978, 1778, 1937, 1868, 1641, 1979, 1854, 1959, 1739, 2004, 1964, 760, 1890, 1701, 1940, 1840, 1817, 1966, 1799, 1941, 1934, 1929, 1962, 1691, 1927, 1764, 1945, 795, 1993, 1804, 1693, 1970, 1728, 1818, 1545, 1992, 1965, 1786, 2009, 1980, 1698, 1647, 1935, 1880, 1921, 1904, 1953, 1871, 1671, 1826, 1989, 1950, 1791, 1990, 1949, 1301, 1975, 1968, 1895, 1208, 1424, 1985, 1665, 1685, 1942, 1669, 64, 1832, 1995, 1987, 1955, 352, 1984, 1925, 1891, 1933, 1679, 2001, 1930, 1991, 1227, 1973, 1723, 1683, 132, 1718, 1944, 1908, 1900, 1657, 1954, 92, 1997, 1938, 1976, 1747, 1226, 1782, 1963, 1746, 1540, 1759, 1939, 1743]
+# print(advent_problem1(nums))
 
 
 
-# iterating over the elements of a list
 
-# fruits = ['apples', 'bananas', 'pears']
-# for fruit in fruits:
-#     print(fruit)
+# Problem 6
+# Write a function to combine two lists of equal length into one, alternating elements.
 
-# for i in range(len(fruits)):
-#     print(i, fruits[i])
+def combine(nums1, nums2):
 
+    # nums1 index 0
+    # nums2 index 0
+    # nums1 index 1
+    # nums2 index 1
+    # nums1 index 2
+    # nums2 index 2
+
+    combo = []
+    for i in range(len(nums1)):
+        # print(i, nums1[i], nums2[i])
+        # combo += [nums1[i], nums2[i]]
+        combo.append(nums1[i])
+        combo.append(nums2[i])
+    
+    return combo
+
+#   0   1   2
+# ['a','b','c']
+# [ 1,  2,  3 ]
+
+# print(combine(['a','b','c'],[1,2,3])) # ['a', 1, 'b', 2, 'c', 3]
+
+
+
+
+# Problem 7
+# Given a list of numbers, and a target number, find a pair of numbers from the list that sum to a target number.
+
+# def find_pair(nums, target):
+#     for num1 in nums:
+#         for num2 in nums:
+#             if num1 + num2 == target:
+#                 return [num1, num2]
+#                 # output = []
+#                 # output.append(num1)
+#                 # output.append(num2)
+#                 # return output
+# print(find_pair([5, 6, 2, 3], 7)) # [5, 2]
+
+def find_pair(nums, target):
+    for i in range(len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == target:
+                return [nums[i], nums[j]]
+    return None
+# print(find_pair([5, 6, 2, 3], 7)) # [5, 2]
+# print(find_pair([6, -2, 2, 3], 0)) # [-2, 2]
+
+
+# Problem 8
+# Write a function to find the average of a list of numbers
+
+def average(nums):
+    '''returns the average of a list'''
+    # add up everything in nums to get a total
+    # total = 0
+    # total += nums[0]
+    # total += nums[1]
+    # total += nums[2]
+    # ...
+
+
+    # total = 0
+    # for i in range(len(nums)):
+    #     total += nums[i]
+    # return total / len(nums)
+
+    total = 0
+    for num in nums:
+        total += num
+    return total / len(nums)
+        
+    # return sum(nums)/len(nums)
+
+    # make an integer for the length of the list
+    # divide the total by the length, return it
+
+# print(average([1, 2, 3, 4, 5])) # 3
+# print(average([56, 78, 12, 157])) # 3
+
+
+
+# Problem 9
+# Write a function to remove all empty strings from a list.
+
+# def remove_empty(mylist)
+#     ...
+# print(remove_empty(['a', 'b', '', 'c', '', 'd'])) # ['a', 'b', 'c', 'd']
+
+
+
+
+
+
+
+# if we're modifying a list as we're iterating over it
+# be sure that we're not skipping over elements
+
+
+# removing b's from the list
+
+#   i
+#   0    1    2    3
+# ['a', 'b', 'b', 'c']
+
+#        i
+#   0    1    2    3
+# ['a', 'b', 'b', 'c']
+
+#             i
+#   0    1    2 
+# ['a', 'b', 'c']
+
+
+# mylist = ['a', 'b', 'b', 'c']
+
+# bad code
+# for i in range(len(mylist)):
+#     if mylist[i] == 'b':
+#         mylist.pop(i) # remove the element at index i
+
+# good code
+# i = 0
+# while i < len(mylist):
+#     if mylist[i] == 'b':
+#         mylist.pop(i)
+#     else:
+#         i += 1
+
+
+def remove_blanks(mylist):
+
+    output = []
+    for i in range(len(mylist)):
+        if mylist[i] != '':
+            output.append(mylist[i])
+    return output
+
+    # while '' in mylist:
+    #     mylist.remove('')
+    
+    # for element in mylist:
+    #     if element == character:
+    #         mylist.remove(element)
+    # return mylist
+    # ['a', 'b', 'c', 'd']
+
+# mylist = ['a', 'b', '', 'c', '', 'd']
+# mylist = ['a', 'b', '', '', '', 'd']
+# print(remove_blanks(mylist))
+
+
+
+
+# Problem 13
+# Write a function that takes n as a parameter and returns n factorial.
+# n! = n*(n-1)*(n-2)*...*2*1
+# 5! = 5*4*3*2*1
+# 9! = 9*8*7*6*5*4*3*2*1
+
+
+def average(nums):
+    total = 0
+    for num in nums:
+        total += num
+    return total / len(nums)
+
+
+def factorial(n):
+    output = 1
+    for x in range(1, n+1):
+        output *= x
+        # print(x)
+    return output
+
+print(factorial(5)) # 120
+
+def factorial_list(n):
+    '''returns a list of the first n factorial numbers'''
+    # make a blank list to return as our final output
+    output = []
+    # iterate n times
+    for value in range(1,n+1):
+        # call factorial for each value
+        # append the factorial to our output
+        output.append(factorial(value))
+    # return the output
+    return output
+
+print(factorial_list(5)) # [1, 2, 6, 24, 120]

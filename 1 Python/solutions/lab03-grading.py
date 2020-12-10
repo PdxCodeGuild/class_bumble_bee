@@ -1,8 +1,15 @@
 
 
+import helpers
 
-score = input('enter a score: ')
-score = int(score)
+
+
+
+
+score = helpers.get_integer('enter a score: ')
+
+
+
 
 # score = int(input('enter a score: '))
 

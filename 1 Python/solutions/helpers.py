@@ -7,3 +7,7 @@ def get_integer(text):
             return int(value)
         print('please enter an integer')
 
+
+# num = get_integer('please enter an integer: ')
+# print(num)
+

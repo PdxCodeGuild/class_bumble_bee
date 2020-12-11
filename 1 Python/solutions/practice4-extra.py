@@ -78,8 +78,48 @@ def fibonacci(n):
     return output
 
 
-print(fibonacci(1)) # [1]
-print(fibonacci(2)) # [1, 1]
+# print(fibonacci(1)) # [1]
+# print(fibonacci(2)) # [1, 1]
 
-print(fibonacci(8))  # [1, 1, 2, 3, 5, 8, 13, 21]
-print(fibonacci(10)) # [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+# print(fibonacci(8))  # [1, 1, 2, 3, 5, 8, 13, 21]
+# print(fibonacci(10)) # [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+
+
+
+# Problem 3: Palindrome
+# A palindrome is a word that's the same forwards or backwards, e.g. racecar. Another way to think of it is as a word that's equal to its own reverse. Write a function check_palindrome(word) which takes a string, and returns True if the string's a palindrome, or False if it's not.
+
+def check_palindrome(word):
+    # convert the word to a list of characters
+    flist = list(word) # ['r', 'a', 'c', 'e', 'c', 'a', 'r']
+    # reverse the list of characters
+    flist.reverse()
+    # join the characters back into a single string
+    reversed_word = ''.join(flist)
+    # compare the original string with the reversed string
+    return word == reversed_word
+    # if word == reversed_word:
+    #     return True
+    # else:
+    #     return False
+
+    # return word == word[::-1]
+
+
+# print(check_palindrome('racecar')) # True
+# print(check_palindrome('palindrome')) # False
+
+
+# def check_palindrome2(word):
+#     for i in range(len(word)//2):
+#         j = len(word) - 1 - i
+#         # i will go 0, 1, 2
+#         # j will go 6, 5, 4
+#         print(word[i], word[j])
+#         if word[i] != word[j]:
+#             return False
+#     return True
+        
+# #                        0123456
+# print(check_palindrome2('racecar')) # True
+# print(check_palindrome2('palindrome')) # False

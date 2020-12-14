@@ -63,6 +63,32 @@ bob   4.123
 print(find_numbers(text)) # [1.23, 5.45, -1.34, 4.123]
 ```
 
+## Problem 5: Parse Query String
 
+Write a function `parse_query_string` which takes a string representing a [query string](https://en.wikipedia.org/wiki/Query_string) and returns a dictionary containing the contents.
+
+
+```
+def parse_query_string(qs):
+    ...
+print(parse_query_string('?a=1&b=2&c=3')) # {'a': 1, 'b': 2, 'c': 3}
+```
+
+## Problem 6: Parse URL
+
+Write a function `parse_url` which takes a string representing a url and returns a dictionary containing the various parts.
+
+```
+def parse_url(url):
+    ...
+print(parse_url('https://en.wikipedia.org/wiki/Web_development#Chronology'))
+# {
+#    'protocol': 'https',
+#    'subdomain': 'en',
+#    'domain': 'wikipedia.org',
+#    'path': '/wiki/Web_development',
+#    'fragment': 'Chronology'
+# }
+```
 
 

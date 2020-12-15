@@ -80,8 +80,45 @@ def validate_phone_number(phone_number):
     return output
 
 
-print(validate_phone_number('0123456789')) # 0123456789
-print(validate_phone_number('012-345-6789')) # 0123456789
-print(validate_phone_number('(012) 345-6789')) # 0123456789
-print(validate_phone_number('012-3A5-6789')) # None
-print(validate_phone_number('1-1-1')) # None
+# print(validate_phone_number('0123456789')) # 0123456789
+# print(validate_phone_number('012-345-6789')) # 0123456789
+# print(validate_phone_number('(012) 345-6789')) # 0123456789
+# print(validate_phone_number('012-3A5-6789')) # None
+# print(validate_phone_number('1-1-1')) # None
+
+
+
+# Problem 4: Find All Numbers
+# Write a function find_numbers which returns a list of floats found in the given string.
+
+def find_numbers(text):
+
+    # return [float(num) for num in re.findall(r'\s([-+]?\d*\.?\d+)', text)]
+
+    results = re.findall(r'\s([-+]?\d*\.?\d+)', text)
+
+    # results = [float(num) for num in results]
+    # return results
+
+    # for i in range(results):
+    #     results[i] = float(results[i])
+    # return results
+
+    output = []
+    for num in results:
+        output.append(float(num))
+    return output
+
+text = '''
+name  favorite number
+joe   1.23
+jane  5.45
+julie -1.34
+bob   4.123
+james 45.235123123123
+bob .
+bob2 .5
+bob3 5.
+bob4 +5
+'''
+print(find_numbers(text)) # [1.23, 5.45, -1.34, 4.123, 45.235123123123, 0.5, 5.0, 5.0]

@@ -1,5 +1,15 @@
 import random
 
+# Generate a list of 6 random numbers representing the winning tickets
+# Start your balance at 0
+# Loop 100,000 times, for each loop:
+# Generate a list of 6 random numbers representing the ticket
+# Subtract 2 from your balance (you bought a ticket)
+# Find how many numbers match
+# Add to your balance the winnings from your matches
+# After the loop, print the final balance    
+
+
 def random_lottery_number(num):
     ''' generates lottery ticket based on six random numbers 1-99'''
     output = []
@@ -43,13 +53,5 @@ expenses = number_of_plays * 2
 final_earnings = earning - expenses
 roi = final_earnings / expenses
 print(roi)
-# Generate a list of 6 random numbers representing the winning tickets
-# Start your balance at 0
-# Loop 100,000 times, for each loop:
-# Generate a list of 6 random numbers representing the ticket
-# Subtract 2 from your balance (you bought a ticket)
-# Find how many numbers match
-# Add to your balance the winnings from your matches
-# After the loop, print the final balance    
 
     

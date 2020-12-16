@@ -1,10 +1,31 @@
 
 
-
-
-
-
 import random
+
+import time
+
+
+
+
+
+# message = 'hello world!'
+# for char in message:
+#     print(char, end='', flush=True)
+#     time.sleep(0.1)
+
+
+
+# for i in range(0, 100):
+#     print(int(2.7182818284**i)%11)
+
+# random.seed(int(time.time()*1000))
+
+# for i in range(10):
+#     print(random.randint(0,10))
+
+
+
+
 
 def random_list(n):
     '''Generates a list of random numbers'''
@@ -66,7 +87,7 @@ def bogosort(nums):
     return is_sorted(nums)
 
 
-nums = random_list(10)
+nums = random_list(8)
 # nums.sort()
 print(nums)
 # shuffle(nums)

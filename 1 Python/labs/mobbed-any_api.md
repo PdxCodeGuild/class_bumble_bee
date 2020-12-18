@@ -1,7 +1,7 @@
 
 
 
-# Lab 19: Any API
+# Lab: Any API
 
 Pick any API and build an command-line interface to read data. 
 

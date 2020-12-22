@@ -18,6 +18,9 @@ def peaks(data):
     # return output
 
 
+    # return [i for i in range(1, len(data)-1) if data[i] > data[i-1] and data[i] > data[i+1]]
+
+
     output = []
     for i in range(len(data)):
         # short-circuited evaluation

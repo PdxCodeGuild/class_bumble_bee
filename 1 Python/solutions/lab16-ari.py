@@ -31,6 +31,10 @@ def count_characters(text):
     #         count += 1
     # return count
 
+    # letters = [char.lower() for char in text if char in string.ascii_letters]
+    # return len(letters)
+
+
     return len(re.findall(r'[a-zA-Z]', text))
 
 

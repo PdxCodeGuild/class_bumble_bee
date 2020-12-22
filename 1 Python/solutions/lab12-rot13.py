@@ -28,6 +28,9 @@ def rotn_approach2(text, n):
         index += n
         index %= len(alphabet)
 
+        # if index > len(alphabet):
+        #     index -= len(alphabet)
+        
         # while index > len(alphabet):
         #     index -= len(alphabet)
         # while index < 0:

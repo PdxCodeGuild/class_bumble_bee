@@ -1,5 +1,13 @@
 
 
+
+
+def min(a, b):
+    if a < b:
+        return a
+    return b
+
+
 def get_integer(text):
     while True:
         value = input(text)

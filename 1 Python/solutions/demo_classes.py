@@ -98,6 +98,7 @@ print(rot_cipher.n)
 text = 'hello'
 print(text)
 text = rot_cipher.encrypt(text)
+# text = RotCipher.encrypt(rot_cipher, text)
 print(text)
 text = rot_cipher.decrypt(text)
 print(text)

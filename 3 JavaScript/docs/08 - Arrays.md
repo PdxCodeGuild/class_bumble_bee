@@ -202,7 +202,7 @@ let nums = [20, 10, 102]
 nums.sort(function(a, b) {
   if (a < b) {
     return -1
-  } else if (a < b) {
+  } else if (a > b) {
     return 1
   } else {
     return 0

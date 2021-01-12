@@ -6,6 +6,14 @@ import string
 # Problem 1
 # Get a string from the user, print out another string, doubling every letter.
 
+
+def double_letters(word):
+    output = ''
+    for char in word:
+        output += char + char
+    return output
+
+
 def multiply_letters(word, n):
     # accumulator pattern
     output = ''

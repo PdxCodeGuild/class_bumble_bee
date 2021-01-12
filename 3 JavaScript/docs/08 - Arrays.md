@@ -108,9 +108,9 @@ The `pop` method removes an element from the end of an array and returns it, whi
 
 ```javascript
 let fruits = ['apples', 'bananas', 'plums']
-console.log(fruits.pop()) // apples
-console.log(fruits) // ['bananas', 'plums']
-console.log(fruits.shift()) // plums
+console.log(fruits.pop()) // plums
+console.log(fruits) // ['apples', 'bananas']
+console.log(fruits.shift()) // apples
 console.log(fruits) // ['bananas']
 ```
 
@@ -202,7 +202,7 @@ let nums = [20, 10, 102]
 nums.sort(function(a, b) {
   if (a < b) {
     return -1
-  } else if (a < b) {
+  } else if (a > b) {
     return 1
   } else {
     return 0

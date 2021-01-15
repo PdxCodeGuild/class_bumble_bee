@@ -1,5 +1,7 @@
 
 
+
+// Fundamentals - Problem 1
 // Write a function that tells whether a number is even or odd (hint, compare a/2 and a//2, or use a%2)
 
 function is_even(x) {
@@ -32,7 +34,7 @@ function double_letters(word) {
 // console.log(double_letters('hello')) // hheelllloooo
 
 
-// Problem 2
+// Strings - Problem 2
 // Return the number of letter occurances in a string.
 
 function count_letter(letter, word) {
@@ -50,7 +52,7 @@ function count_letter(letter, word) {
 
 
 
-// Problem 3
+// Strings - Problem 3
 // Return the letter that appears the latest in the english alphabet.
 
 function latest_letter(word) {
@@ -83,7 +85,75 @@ function latest_letter(word) {
 
 
 
-// Problem 5
+
+// Problem 4
+// Write a function that returns the number of occurances of 'hi' in a given string.
+
+
+function countHi(text) {
+    let count = 0
+    for (let i=0; i<text.length; i++) {
+        if (text[i+0] == 'h' && text[i+1] == 'i') {
+            count += 1
+        }
+    }
+    return count
+}
+
+
+function countOccurences(text, target) {
+    // iterate through the string we're given by index - i
+    // take the substring of text from i but the length of target
+    // 'ab', 'bc'
+    let count = 0
+    for (let i=0; i<text.length; i++) {
+        // console.log(i + ' ' + text[i])
+        let substr_output = text.substr(i, target.length)
+        if (substr_output == target) {
+            count += 1
+        }
+    }
+    return count
+
+
+
+    // let count = 0
+    // for (let i=0; i<text.length; i++) {
+    //     let found = true
+    //     for (let j=0; j<target.length; j++) {
+    //         if (text[i+j] != target[j]) {
+    //             found = false
+    //             break
+    //         }
+    //     }
+    //     if (found) {
+    //         count += 1
+    //     }
+    // }
+    // return count
+
+
+
+    // let count = text.split(target).length - 1
+    // return count
+}
+
+//                         i=0123456789
+// console.log(countOccurences('abc hi 123 hi hello goodbye', 'hi')) // 2
+// console.log(countOccurences('hi hi 123 high hello goodbye hihi', 'hi')) // 5
+// console.log(countOccurences('hi hellooo hello 123 high hello goodbye hihi', 'hello')) // 3
+
+
+
+// let x = function() {}
+// let x = () => {}
+
+// String.prototype.countOccurences = function(target) {}
+// 'hello world! hello sky!'.countOccurences('hello')
+// countOccurences('hello world! hello sky!', 'hello')
+
+
+// Strings - Problem 5
 // Write a function that converts text to snake case (all lowercase, underscores for spaces, no special characters).
 
 function snake_case(text) {
@@ -106,7 +176,79 @@ function snake_case(text) {
 
 
 
-// Problem 2
+// Problem 6
+// Write a function that converts text to camel case (no spaces, no special characters, leading capitals except the first).
+
+function camelCase2(text) {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+
+    // make the text lower case
+    text = text.toLowerCase()
+    // start with a blank output string
+    let output = ''
+    // iterate over the input string
+    for (let i=0; i<text.length; i++) {
+        // if the character is in the alphabet+space, add it to a new string
+        if (alphabet.includes(text[i])) {
+            // console.log(text[i] + ' is indeed in ' + alphabet)
+            if (i > 0 && text[i-1] == ' ') {
+                output += text[i].toUpperCase()
+            } else {
+                output += text[i]
+            }
+        }
+    }
+    return output
+}
+// console.log(camelCase2('Hello World? hi!!')) // helloWorld
+// console.log(camelCase2('This is another example.')) // thisIsAnotherExample
+
+
+
+function camelCase(text) {
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz '
+
+    // make the text lower case
+    text = text.toLowerCase()
+    // start with a blank output string
+    let output = ''
+    // iterate over the input string
+    for (let i=0; i<text.length; i++) {
+        // if the character is in the alphabet+space, add it to a new string
+        if (alphabet.includes(text[i])) {
+            // console.log(text[i] + ' is indeed in ' + alphabet)
+            // if (i > 0 && text[i] == ' ') {
+            //     text[i] = 
+            // }
+            output += text[i]
+        }
+
+    }
+
+    // split on whitespace, turn the string into an array
+
+    output = output.split(' ')
+
+    // capitalize the first letter of each word except the first word
+    //    0         1       2
+    // ['hello', 'world', 'hi'] -> ['hello', 'World', 'Hi']
+    for (let i=1; i<output.length; i++) {
+        // console.log(output[i])
+        output[i] = output[i].charAt(0).toUpperCase() + output[i].slice(1)
+    }
+
+    // mush the array back together
+    output = output.join('')
+    return output
+}
+// console.log(camelCase('Hello World? hi!!')) // helloWorld
+// console.log(camelCase('This is another example.')) // thisIsAnotherExample
+
+
+
+
+
+// Lists - Problem 2
 // Write a function that takes a list of numbers, and returns True if there is an even number of even numbers.
 
 function eveneven(nums) {
@@ -138,7 +280,7 @@ function eveneven(nums) {
 
 
 
-// Problem 4
+// Lists - Problem 4
 // Write a function to copy all the elements of a list with value less than 10 to a new list and return it.
 
 
@@ -173,7 +315,7 @@ function extract_less_than_ten(nums) {
 
 
 
-// Problem 5
+// Lists - Problem 5
 // Write a function to find all common elements between two lists.
 
 function common_elements(nums1, nums2) {
@@ -202,7 +344,12 @@ function common_elements(nums1, nums2) {
 // console.log(common_elements([1, 2, 2, 3], [2, 3, 4])) // [2, 3]
 
 
-// Problem 7
+
+
+
+
+
+// Lists - Problem 7
 // Given a list of numbers, and a target number, find a pair of numbers from the list that sum to a target number. Optional: return a list of all pairs of numbers that sum to a target value.
 
 
@@ -294,4 +441,4 @@ function findCapitalIndices(text) {
 
 }
 //                              0123456789
-console.log(findCapitalIndices('CodEWaRsCodEWaRs')) // [0, 3, 4, 6, 8, ...]
+// console.log(findCapitalIndices('CodEWaRsCodEWaRs')) // [0, 3, 4, 6, 8, ...]

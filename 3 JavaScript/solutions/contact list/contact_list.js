@@ -9,6 +9,7 @@ let table_contacts = document.querySelector('#table_contacts')
 let div_alert = document.querySelector('#div_alert')
 
 
+
 btn_add.addEventListener('click', function(event) {
     
     let name = input_name.value
@@ -17,9 +18,9 @@ btn_add.addEventListener('click', function(event) {
 
     if (name === '' || email === '' || dob === '') {
         // alert('Please fill out all fields')
-        div_alert.style.display = ''
-        setTimeout(function() {
-            div_alert.style.display = 'none'
+        div_alert.style.display = '' // show the alert
+        setTimeout(function() { // wait 3 seconds
+            div_alert.style.display = 'none' // hide the alert
         }, 3000)
         return
     }

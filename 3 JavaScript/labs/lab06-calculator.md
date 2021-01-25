@@ -2,7 +2,7 @@
 
 # Lab 6: Calculator
 
-Let's build a graphical calculator, you can find some examples of calculators on [Google images](https://www.google.com/search?q=calculator+screenshot&rlz=1C1CHBF_enUS752US752&source=lnms&tbm=isch&sa=X&ved=0ahUKEwie2JG15M3WAhUQ-mMKHUdsCnkQ_AUICigB&biw=1536&bih=772&dpr=1.25). Use [Bootstrap's grid](https://getbootstrap.com/docs/4.0/layout/grid/), [Materialize's grid](https://materializecss.com/grid.html), or [CSS grid](https://www.w3schools.com/css/css_grid.asp) to organize the buttons. You can also use icons or unicode characters like ÷ and × rather than / and * for visual flair.
+Let's build a graphical calculator, you can find some examples of calculators on [Google images](https://www.google.com/search?q=calculator+screenshot&rlz=1C1CHBF_enUS752US752&source=lnms&tbm=isch&sa=X&ved=0ahUKEwie2JG15M3WAhUQ-mMKHUdsCnkQ_AUICigB&biw=1536&bih=772&dpr=1.25). Use [Bootstrap's grid](https://getbootstrap.com/docs/4.0/layout/grid/), [Materialize's grid](https://materializecss.com/grid.html), or [CSS grid](https://www.w3schools.com/css/css_grid.asp) to organize the buttons. You can also use icons or unicode characters like `÷` and `×` rather than `/` and `*` for visual flair.
 
 ### Graphical Features to Include
 

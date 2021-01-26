@@ -17,7 +17,6 @@ let app = new Vue({
             }).then(response => {
                 let joke = response.data.joke
                 this.output = joke
-                console.log(joke)
             })
         }
     },

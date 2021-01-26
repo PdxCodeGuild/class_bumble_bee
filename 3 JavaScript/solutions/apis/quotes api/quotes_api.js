@@ -65,6 +65,23 @@
 // x = () => {}
 
 
+// Array.prototype.myFunction = function() {
+//     alert('hello!')
+// }
+// let nums = [1, 2, 3]
+// nums.myFunction()
+
+
+// Math.randint = function(a, b) {
+//     return Math.floor(Math.random()*(b-a) + a)
+// }
+// console.log(Math.randint(5, 10))
+
+
+
+
+
+
 
 let app = new Vue({
     el: '#app',
@@ -77,9 +94,10 @@ let app = new Vue({
             axios({
                 method: 'get',
                 url: 'https://favqs.com/api/qotd'
-            }).then((response) => {
+            }).then(response => {
                 // console.log(response)
                 // console.log(response.data)
+                console.log(this)
                 this.author = response.data.quote.author
                 this.quote = response.data.quote.body
             })

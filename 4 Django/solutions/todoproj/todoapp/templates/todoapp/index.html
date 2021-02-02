@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'todoapp/index.css' %}"/>
+    <script src="{% static 'todoapp/index.js' %}"></script>
+</head>
+<body>
+    <h1>Todo</h1>
+    <ul>
+        {% for todo_item in todo_items %}
+        <li>{{ todo_item.text }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

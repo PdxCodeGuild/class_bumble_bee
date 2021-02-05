@@ -1,53 +1,74 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'main/index.css' %}"/>
-    <script src="{% static 'main/index.js' %}"></script>
-    <style>
-        .colors {
-            display:flex;
-            flex-direction:row;
-            justify-content:space-between;
-        }
-        .colors div {
-            color: {{ text_color }};
-            padding:20px;
-        }
-    </style>
-    <script>
-        // **THIS IS BAD PRACTICE**
-        let letters = [
-            {% for char in user.first_name %}
-            '{{char}}',
-            {% endfor %}
-        ]
-        console.log(letters)
-        let age = {{ user.age }}
-        age += 1
-        console.log('next year the user will be ' + age)
-    </script>
+    <title>Document</title>
 </head>
 <body>
-    <h1>{{ title }}</h1>
-    <div>Welcome back {{ user.first_name }} {{ user.last_name }}</div>
-    <h3>Colors</h3>
-    <div class="colors">
-        {% for color in paint_colors %}
-        <div style="background-color:{{ color }}">{{ forloop.counter }}) {{ color | title }}</div>
-        {% endfor %}
-    </div>
-    {% if user.age < 10 %}
-    <div>Toys!</div>
-    {% elif user.age < 30 %}
-    <div>Arts & Crafts</div>
-    {% else %}
-    <div>Scrapbooking</div>
-    {% endif %}
-    <img src="{% static 'main/bee.jpg' %}"/>
+    <form action="/receive_form/" method="post">
+        {% csrf_token %}
+        <input type="text" name="city_name" placeholder="City Name" required pattern="\w{5,}" title="city name must be 5 or more characters" value="Corvallis"/>
+        <input type="text" name="city_latitude" placeholder="Latitude" required pattern="[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)" title="please enter a number" value="44.5646"/>
+        <input type="text" name="city_longitude" placeholder="Longitude" required pattern="[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)" title="please enter a number" value="123.2620" />
+        <select name="state_id">
+            <option selected disabled value="">Select a state</option>
+            {% for state in states %}
+            <option value="{{ state.id }}">{{ state.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Create City</button>
+    </form>
+    <h1 title="welcome to my website :)">{{ title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>State</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th># Customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for city in cities %}
+            <tr>
+                <td>{{ city.name }}</td>
+                <td>{{ city.state.name }}</td>
+                <td>{{ city.latitude }}</td>
+                <td>{{ city.longitude }}</td>
+                <td>{{ city.customers.count }}</td>
+            </tr>
+            {% endfor %}
+        <tbody>
+    </table>
+
+    <h1>List of Customers</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City, State</th>
+                <th>City, State</th>
+                <th>Age</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.get_full_name }}</td>
+                <td>{{ customer.city_state }}</td>
+                <td>{{ customer.city.name }}, {{customer.city.state.name }} </td>
+                {% if customer.age is not None %}
+                <td>{{ customer.age }}</td>
+                {% else %}
+                <td>-</td>
+                {% endif %}
+                <td>{{ customer.get_age_or_dash }}</td>
+            </tr>
+            {% endfor %}
+        <tbody>
+    </table>
 </body>
 </html>

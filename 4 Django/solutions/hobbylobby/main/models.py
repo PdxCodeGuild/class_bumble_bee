@@ -9,7 +9,7 @@ class State(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=200)
-    state = models.ForeignKey(State, on_delete=models.PROTECT)
+    state = models.ForeignKey(State, on_delete=models.PROTECT, related_name='cities')
     latitude = models.FloatField()
     longitude = models.FloatField()
 
@@ -24,7 +24,7 @@ class Customer(models.Model):
     # blank=True allows us to save a blank string for the middle name in the admin panel
     middle_name = models.CharField(max_length=200, blank=True)
     last_name = models.CharField(max_length=200)
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, related_name='customers')
     notes = models.TextField()
     send_newsletter = models.BooleanField()
     age = models.IntegerField(null=True, blank=True)
@@ -33,7 +33,17 @@ class Customer(models.Model):
     date_joined = models.DateTimeField()
 
     def __str__(self):
-        print(self.city)
-        # a if condition else b
+        return self.last_name
+
+    def get_full_name(self):
         return self.first_name + ' ' + ('' if len(self.middle_name) == 0 else self.middle_name[0] + '.') + ' ' + self.last_name
 
+    def city_state(self):
+        print(type(self.city))
+        return self.city.name + ', ' + self.city.state.name
+    
+    def get_age_or_dash(self):
+        if self.age is not None:
+            return self.age
+        else:
+            return '-'

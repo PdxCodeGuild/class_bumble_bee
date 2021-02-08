@@ -14,7 +14,8 @@ def index(request):
     return render(request, 'polls/index.html', context)
 
 def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+    # question = Question.objects.get(id=question_id)
+    question = get_object_or_404(Question, id=question_id)
     if question.closed:
         return HttpResponseRedirect(reverse('polls:index'))
     return render(request, 'polls/detail.html', {'question': question})

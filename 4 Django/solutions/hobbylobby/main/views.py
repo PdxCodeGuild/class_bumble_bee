@@ -22,7 +22,7 @@ def index(request):
 
 
 def receive_form(request):
-    print(request.GET)
+    # print(request.GET)
     print(request.POST)
     
     city_name = request.POST['city_name']

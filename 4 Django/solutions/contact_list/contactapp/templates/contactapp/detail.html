@@ -31,7 +31,11 @@
         <td>{{contact.notes}}</td>
       </tr>
       <tr>
-        <td><a href="{% url 'contactapp:index' %}"   class="btn btn-primary">Back</a>
+        <td>
+          <a href="{% url 'contactapp:index' %}" class="btn btn-primary">Back</a>
+          <a href="{% url 'contactapp:delete_contact' contact.id %}" class="btn btn-danger">Delete (link)</a>
+        </td>
+        <td></td>
       </tr>
   
     </tbody>

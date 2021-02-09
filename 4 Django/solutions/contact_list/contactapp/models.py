@@ -18,7 +18,8 @@ class Contact(models.Model):
     city = models.ForeignKey(City, on_delete=models.PROTECT, related_name='contacts')
     notes = models.CharField(max_length=300)
     created_date = models.DateTimeField(auto_now_add=True)
-
+    archived = models.BooleanField()
+    
     def __str__(self):
-        return self.first_name + ' ' + self.middle_name + ' ' + self.last_name + '-' + self.email
+        return self.first_name + ' ' + self.middle_name + ' ' + self.last_name
     

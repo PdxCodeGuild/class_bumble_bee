@@ -44,7 +44,10 @@ def save_contact(request):
     phone_number = request.POST['phone_number']
     notes = request.POST['notes']
     city_id = request.POST['city_id']
-    existing_city = City.objects.get(id=city_id)
+    if city_id != '':
+        existing_city = City.objects.get(id=city_id)
+    else:
+        existing_city = City.objects.get(name='Portland')
     contact = Contact(first_name = first_name, middle_name=middle_name, last_name=last_name, email =email, phone_number = phone_number, notes = notes, city = existing_city  )
 
     # contact = Contact(first_name = first_name, middle_name=middle_name, last_name=last_name, email =email, phone_number = phone_number, notes = notes, city_id=city_id)

@@ -1,20 +1,20 @@
-{% load static %}
+{% extends 'todoapp/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'todoapp/index.css' %}"/>
-    <script src="{% static 'todoapp/index.js' %}"></script>
-</head>
-<body>
-    <h1>Todo</h1>
+{% block content %}
+    <form action="{% url 'todoapp:add_todo' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="todo_text" placeholder="Todo item"/>
+        <select name="todo_priority_id">
+            <option value="" selected disabled>Priority...</option>
+            {% for priority in priorities %}
+            <option value="{{priority.id}}">{{priority.name}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Create Todo</button>
+    </form>
     <ul>
         {% for todo_item in todo_items %}
         <li>{{ todo_item.text }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

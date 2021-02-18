@@ -1,0 +1,35 @@
+{% extends 'contacts/base.html' %}
+
+{% block content %}
+<a href="{% url 'contacts:create' %}" class="btn btn-primary">Create Contact</a>
+<table id="contact_table" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contacts %}
+    <tr>
+      <td><img src="{{ contact.image.url }}"/></td>
+      <td>{{ contact.full_name }}</td>
+      <td>{{ contact.type.name }}</td>
+      <td><a href="{% url 'contacts:detail' contact.id %}" class="btn btn-outline-primary"><i class="bi-eye"></i></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<style>
+    #contact_table img {
+        width:50px;
+        transition: transform 1s;
+    }
+    #contact_table img:hover {
+        transform:scale(1.2);
+        z-index:10;
+    }
+</style>
+{% endblock %}

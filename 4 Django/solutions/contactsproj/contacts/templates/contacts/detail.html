@@ -1,0 +1,15 @@
+{% extends 'contacts/base.html' %}
+
+{% block content %}
+<div class="d-flex">
+    <img src="{{ contact.image.url }}"/>
+    <div>
+        <h1>{{contact.full_name}}</h1>
+        <div>{{contact.type}}</div>
+        <div><a href="mailto:{{contact.email}}">{{contact.email}}</a></div>
+        <div>{{contact.birthday}}</div>
+        
+    </div>
+</div>
+
+{% endblock %}

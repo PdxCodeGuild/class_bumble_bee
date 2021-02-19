@@ -5,7 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 
 
 def register_page(request):
-    return render(request, 'users/register.html', {})
+    message = request.GET.get('message', '')
+    if message == 'user_already_exists':
+        message = 'A user with that username already exists'
+    return render(request, 'users/register.html', {'message': message})
 
 
 def register_user(request):
@@ -18,7 +21,8 @@ def register_user(request):
     print(password)
 
     if User.objects.filter(username=username).exists():
-        return render(request, 'users/register.html', {'message': 'User already exists'})
+        # return render(request, 'users/register.html', {'message': 'User already exists'})
+        return HttpResponseRedirect(reverse('users:register_page')+'?message=user_already_exists')
 
 
     user = User.objects.create_user(username, email, password)

@@ -52,13 +52,18 @@ class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     birthday = models.DateField()
     type = models.ForeignKey(ContactType, on_delete=models.PROTECT, related_name='contacts')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='contacts')
 
     def full_name(self):
         return self.first_name + ' ' + self.last_name
+    
+    def get_image(self):
+        if self.image:
+            return self.image.url
+        return '/static/contacts/default_contact_image.png'
 
     def __str__(self):
         return self.full_name()

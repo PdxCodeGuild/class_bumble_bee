@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="d-flex">
-    <img src="{{ contact.image.url }}"/>
+    <img src="{{ contact.get_image }}"/>
     <div>
         <h1>{{contact.full_name}}</h1>
         <div>{{contact.type}}</div>
@@ -11,5 +11,10 @@
         
     </div>
 </div>
+<style>
+    img {
+        height:140px;
+    }
+</style>
 
 {% endblock %}

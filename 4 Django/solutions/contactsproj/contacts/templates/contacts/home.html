@@ -1,4 +1,5 @@
 {% extends 'contacts/base.html' %}
+{% load static %}
 
 {% block content %}
 <a href="{% url 'contacts:create' %}" class="btn btn-primary">Create Contact</a>
@@ -9,15 +10,23 @@
       <th scope="col">Name</th>
       <th scope="col">Type</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     {% for contact in contacts %}
     <tr>
-      <td><img src="{{ contact.image.url }}"/></td>
+      <td>
+        {% if contact.image %}
+        <img src="{{ contact.image.url }}"/>
+        {% else %}
+        <img src="{% static 'contacts/default_contact_image.png' %}"/>
+        {% endif %}
+      </td>
       <td>{{ contact.full_name }}</td>
       <td>{{ contact.type.name }}</td>
       <td><a href="{% url 'contacts:detail' contact.id %}" class="btn btn-outline-primary"><i class="bi-eye"></i></a></td>
+      <td><a href="{% url 'contacts:edit' contact.id %}" class="btn btn-outline-primary"><i class="bi-pencil"></i></a></td>
     </tr>
     {% endfor %}
   </tbody>

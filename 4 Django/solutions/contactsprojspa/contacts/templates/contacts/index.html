@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,21 +8,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'contacts/style.css' %}"/>
 </head>
 
 <body>
-    <h1>Hello World!</h1>
-    <div id="app">
-        <div v-for="contact in contacts" style="display:flex;">
+    <main>
+        <header>
+            <h1>Contacts</h1>
+            <div id="header_links">
+                <span>Link 1</span>
+                <span>Link 2</span>
+                <span>Link 3</span>
+            </div>
+        </header>
+        <div id="app">
             <div>
-                <img v-bind:src="contact.image"/>
+                <input type="text" placeholder="Name" v-model="contact_name"/>
+                <input type="number" placeholder="Age" v-model="contact_age"/>
+                <button v-on:click="createContact">Create Contact</button>
             </div>
             <div>
-                <div>[[ contact.name ]]</div>
-                <div>[[ contact.age ]]</div>
+                <input type="text" placeholder="Name" v-model="contact_name"/>
+                <input type="number" placeholder="Age" v-model="contact_age"/>
+                <input type="file" accept="image/*" id="contact_image"/>
+                <button v-on:click="createContact2">Create Contact</button>
+            </div>
+            <div v-for="contact in contacts" class="contact">
+                <div>
+                    <img v-if="contact.image != ''" v-bind:src="contact.image"/>
+                    <img v-else src="{% static 'contacts/default_contact_image.png' %}"/>
+                </div>
+                <div>
+                    <div><h3>[[ contact.name ]]</h3></div>
+                    <div>Age [[ contact.age ]]</div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
     <script>
@@ -33,16 +57,65 @@
             // and strip the {{ message }} out from your template
             delimiters: ['[[', ']]'],
             data: {
-                contacts: []
+                contacts: [],
+                contact_name: '',
+                contact_age: ''
+            },
+            methods: {
+                resetFields: function() {
+                    this.contact_name = ''
+                    this.contact_age = ''
+                    let contact_image = document.querySelector('#contact_image')
+                    contact_image.value = ''
+                },
+                createContact: function() {
+                    axios({
+                        url: "{% url 'contacts:create_contact' %}",
+                        method: 'post',
+                        data: {
+                            name: this.contact_name,
+                            age: this.contact_age
+                        },
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        }
+                    }).then(response => {
+                        console.log(response.data)
+                        this.getContacts()
+                        this.resetFields()
+                    })
+                },
+                createContact2: function() {
+                    let form_data = new FormData()
+                    let contact_image = document.querySelector('#contact_image')
+                    form_data.append('contact_image', contact_image.files[0])
+                    form_data.append('name', this.contact_name)
+                    form_data.append('age', this.contact_age)
+                    axios({
+                        url: "{% url 'contacts:create_contact2' %}",
+                        method: 'post',
+                        data: form_data,
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        }
+                    }).then(response => {
+                        console.log(response.data)
+                        this.getContacts()
+                        this.resetFields()
+                    })
+                },
+                getContacts: function() {
+                    axios({
+                        url: "{% url 'contacts:get_contacts' %}",
+                        method: 'get'
+                    }).then(response => {
+                        console.log(response.data)
+                        this.contacts = response.data.contacts
+                    })
+                }
             },
             created: function() {
-                axios({
-                    url: "{% url 'contacts:get_contacts' %}",
-                    method: 'get'
-                }).then(response => {
-                    console.log(response.data)
-                    this.contacts = response.data.contacts
-                })
+                this.getContacts()
             }
         })
     </script>

@@ -41,3 +41,25 @@ header {
     border: 1px solid lightgrey;
     margin-right:20px;
 }
+
+
+
+.btn {
+    color:white;
+    background-color:blue;
+    padding: 4px;
+    outline: 0;
+    border: 1px solid lightgrey;
+    cursor: pointer;
+    user-select:none;
+    transition: all 200ms;
+}
+.btn.selected_page {
+    background-color:black;
+}
+
+h3 {
+    margin: 0;
+}
+
+

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.core.paginator import Paginator
 from .models import Contact
 import json
 
@@ -29,18 +30,36 @@ def get_contacts(request):
     # return JsonResponse({'a': 1, 'b': 2})
     
     # get all the contacts out of the database
-    contacts = Contact.objects.order_by('-id')
+    contacts = Contact.objects.filter(archived=False).order_by('-id')
+    num_pages = 1
+    total_records = contacts.count()
+
+    # pagination
+    if 'page' in request.GET:
+        page = request.GET.get('page', 1)
+        paginator = Paginator(contacts, 5)
+        contacts = paginator.page(page)
+        num_pages = paginator.num_pages
+        total_records = paginator.count
+
+
     # turning our queryset of contacts into a list of dictionaries
     # json can only contain: null, boolean, string, number, lists, objects
     contact_data = []
     for contact in contacts:
         contact_data.append({
+            'id': contact.id,
             'name': contact.name,
             'age': contact.age,
             'image': contact.image.url if contact.image else '',
         })
     # print(contact_data)
-    return JsonResponse({'contacts': contact_data})
+    json_data = {
+        'contacts': contact_data,
+        'num_pages': num_pages,
+        'total_records': total_records
+    }
+    return JsonResponse(json_data)
 
 def create_contact(request):
     # print(request.body)
@@ -50,6 +69,13 @@ def create_contact(request):
 
     contact = Contact(name=name, age=age, image=None)
     contact.save()
+
+    # return JsonResponse({
+    #         'id': contact.id,
+    #         'name': contact.name,
+    #         'age': contact.age,
+    #         'image': contact.image.url if contact.image else '',
+    #     })
 
     return HttpResponse('ok')
 
@@ -64,4 +90,43 @@ def create_contact2(request):
     )
     contact.save()
 
+    return HttpResponse('ok')
+
+
+
+def archive_contact(request):
+    # print(request.GET)
+    contact_id = request.GET['contact_id']
+    contact = Contact.objects.get(id=contact_id)
+    contact.archived = True
+    contact.save()
+    return HttpResponse('ok')
+
+
+def archive_contact2(request, contact_id):
+    contact = Contact.objects.get(id=contact_id)
+    contact.archived = True
+    contact.save()
+    return HttpResponse('ok')
+
+def archive_contact3(request):
+    contact_data = json.loads(request.body)
+    contact_id = contact_data['contact_id']
+    contact = Contact.objects.get(id=contact_id)
+    contact.archived = True
+    contact.save()
+    return HttpResponse('ok')
+
+
+
+def delete_contact(request):
+    contact_id = request.GET['contact_id']
+    contact = Contact.objects.get(id=contact_id)
+    contact.delete()
+    return HttpResponse('ok')
+
+
+def delete_archived_contacts(request):
+    contacts = Contact.objects.filter(archived=True)
+    contacts.delete()
     return HttpResponse('ok')

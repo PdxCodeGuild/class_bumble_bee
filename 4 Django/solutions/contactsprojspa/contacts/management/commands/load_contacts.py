@@ -22,7 +22,7 @@ from django.core import files
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        # Contact.objects.all().delete()
+        Contact.objects.all().delete()
         for i in range(50):
             contact_data = requests.get('https://randomuser.me/api/').json()
             contact_data = contact_data['results'][0]

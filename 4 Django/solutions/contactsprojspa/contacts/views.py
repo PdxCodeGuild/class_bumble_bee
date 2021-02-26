@@ -34,9 +34,13 @@ def get_contacts(request):
     num_pages = 1
     total_records = contacts.count()
 
+    if 'search' in request.GET:
+        search = request.GET['search']
+        contacts = contacts.filter(name__icontains=search)
+
     # pagination
     if 'page' in request.GET:
-        page = request.GET.get('page', 1)
+        page = request.GET['page']
         paginator = Paginator(contacts, 5)
         contacts = paginator.page(page)
         num_pages = paginator.num_pages

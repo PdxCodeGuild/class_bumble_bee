@@ -3,6 +3,18 @@
 
 
 
+1. Create model, run migrations
+2. Add button to template to favorite
+3. Add another method to the vue app to send a post request
+4. Create view to save favorite
+5. Create a view to get the favorite books out of the database (into json)
+6. Show the list of favorited books in the template
+
+
+
+
+
+
 
 ## Templates
 

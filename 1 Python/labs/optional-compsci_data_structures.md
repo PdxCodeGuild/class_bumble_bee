@@ -3,21 +3,42 @@
 
 # Lab - Computer Science - Data Structures
 
-Using the following Node class, let's implement some data structures.
+In this lab we'll implement some common data structures using a `Node` class that contains both a value and a reference to another node. These can be chained together.
 
 ```python
 class Node:
-    def __init__(self, element, next=None):
-        self.element = element
+    def __init__(self, item, next=None):
+        self.item = item
         self.next = next
 
     def __str__(self):
-        return f'({self.element}, {self.next is not None})'
+        return f'({self.item}, {self.next})'
+
+# create nodes
+n3 = Node('pears')
+n2 = Node('bananas', n3)
+n1 = Node('apples', n2)
+
+# n1 -> n2 -> n3
+print(n1.item) # apples
+print(n1.next.item) # bananas
+print(n1.next.next.item) # pears
+print(n1) # ('apples',('bananas',('pears',None)))
+
+# iterate over the nodes
+n = n1 # temporary node we advance each iteration
+while n is not None: # stop when we run out of nodes
+  print(n.item) # prints apples, bananas, pears
+  n = n.next # advance the node to the next node
 ```
 
-## Version 1 - Stack
+## Part 1: Stack
 
-A [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) can be visualized like a stack of plates, and provides two main methods: `push` which adds an element to the top, and `pop` which removes an element from the top and returns it. A stack is a `FILO` "first-in-last-out" data structure.
+A [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) is a FILO (first-in, last-out) data structure that can be visualized like a stack of plates. The only accessible item is the 'top'. There are three operations that can be performed.
+
+- `push` add a new item to the top of the stack, the previous top item goes underneath it.
+- `pop` removes the item from the top of the stack and returns it, the one below it becomes the new top item.
+- `peek` returns the item at the top of the stack without modifying anything.
 
 
 Stub:
@@ -45,10 +66,18 @@ print(s.pop()) # 5
 ```
 
 
+## Part 2: Linked List
 
-## Version 2 - Linked List (optional)
 
-A [linked list](https://en.wikipedia.org/wiki/Linked_list) is like a regular list in Python, and provides methods for adding and removing elements. You may also like to follow [this tutorial](https://stackabuse.com/python-linked-lists/).
+A [linked list](https://en.wikipedia.org/wiki/Linked_list) is similar to the built-in list in Python, and provides methods for adding and removing elements.
+
+- `append` adds a new element to the end of a list
+- `insert` inserts a new element at a given index
+- `remove` remove the first occurrence of the element
+- `get` get the element at the given index (starting with 0)
+- `find` find the first occurrence of the element and return it
+- `length` return the length of the list
+
 
 Stub:
 ```python
@@ -60,6 +89,8 @@ class LinkedList:
   def insert(element, index): # insert the element at the given index
     ...
   def remove(element): # remove the first occurrence of the element
+    ...
+  def get(index): # get the element at the given index (starting with 0)
     ...
   def find(element): # find the first occurrence of the element and return it
     ...
@@ -78,12 +109,67 @@ print(nums.length()) # 2
 ```
 
 
-
-## Version 3 - Doubly Linked List (optional)
-
-In a [doubly-linked list](https://en.wikipedia.org/wiki/Doubly_linked_list) each node maintains a reference to both the next and previous node. Implement a class `DoubleyLinkedList` with the same methods as `LinkedList` but with each node having a reference to both the `previous` and `next` nodes.
+## Part 3: Trees
 
 
+Calculate the total number of points for each user
+find the most 
+
+recursion, tree structure
+
+Input:
+```json
+{
+  "post": {
+    "title": "What is your favorite fruit?",
+    "body": "I'm curious what people's favorite fruit is!",
+    "user": "Leanne",
+    "upvotes": 20,
+    "coments": [
+      {
+        "text": "My favorite is kiwi!",
+        "user": "Ervin",
+        "comments": [
+          {
+            "text": "",
+            "user": "",
+            "comments": [
+              {
+                "text": "",
+                "user": "",
+                "comments": [
+
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "text": "",
+        "user": "",
+        "comments": []
+      },
+      {
+        "text": "",
+        "user": "",
+        "comments": []
+      }
+    ]
+  }
+}
+```
+
+
+<!--
+## Part 3: Tree
+
+Let's modify the 
+
+
+
+## Part 4: Graph
+-->
 
 
 

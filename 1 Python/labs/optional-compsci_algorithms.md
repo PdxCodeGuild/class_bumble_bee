@@ -7,7 +7,7 @@
 
 [Big-O Notation](https://en.wikipedia.org/wiki/Big_O_notation) is a measure of the complexity of an algorithm, specifically how many steps an algorithm takes depending on the size of the input. For example, performing a linear search on a list of `n` elements takes, on average, `n/2` steps, so we say a linear search is `O(n)`. We throw away multiplicative and additive factors to characterize algorithms independently of the hardware it's running on. [Big-O Cheat Sheet](https://www.bigocheatsheet.com/)
 
-## Version 1 - Linear Search
+## Part 1 - Linear Search
 
 Implement linear search, which simply loops through the given list and check if each element is equal to the value we're searching for. If it is, return the index at which it was found, otherwise, return a value indicating that it was not found.
 
@@ -30,9 +30,14 @@ index = linear_search(nums, 3)
 print(index) # 2
 ```
 
-## Version 2 - Binary Search
+## Part 2 - Binary Search
 
-Implement [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm), which requires that a list is sorted. Begin by defining two indices: `low` and `high`. Initialize `low` as the lowest index in the list and `high` as the highest. Loop while `low` is less then `high`. For each iteration, calculate a third index `mid` which is in the middle between `low` and `high`. If the element at `mid` is the one you're searching for, return it, otherwise check is the target value is less than or greater than the one at `mid`. If it's less, make `high` equal to `mid` and loop. If it's greater, make `low` equal to `mid` and loop. If the loop terminates without returning, return a value indicating that it was not found.
+Implement [binary search](https://en.wikipedia.org/wiki/Binary_search_algorithm), which requires that a list is sorted and divides its search range in half each iteration until it finds its target.
+- Begin by defining two indices: `low` and `high`. Initialize `low` as the lowest index in the list and `high` as the highest.
+- Loop while `low` is less then `high`.
+  - For each iteration, calculate a third index `mid` which is in the middle between `low` and `high`
+  - If the element at `mid` is the one you're searching for, return it, otherwise check is the target value is less than or greater than the one at `mid`. If it's less, make `high` equal to `mid` and loop.
+  - If it's greater, make `low` equal to `mid` and loop. If the loop terminates without returning, return a value indicating that it was not found.
 
 Example run:
 ```
@@ -67,6 +72,7 @@ Stub:
 ```python
 def binary_search(nums, value):
   ...
+#       0  1  2  3  4  5  6  7
 nums = [1, 2, 3, 4, 5, 6, 7, 8]
 index = linear_search(nums, 3)
 print(index) # 2
@@ -74,7 +80,7 @@ print(index) # 2
 
 
 
-## Version 3 - Bubble Sort (optional)
+## Part 3 - Bubble Sort
 
 [Bubble sort](https://en.wikipedia.org/wiki/Bubble_sort) is one of the simplest and least efficient sorting algorithms. We repeatedly loop over the list, comparing each number to the one next to it, and swapping them if needed.
 
@@ -95,7 +101,7 @@ procedure bubbleSort(A : list of sortable items)
 end procedure
 ```
 
-## Version 4 - Insertion Sort (optional)
+## Part 4 - Insertion Sort
 
 Implement [insertion sort](https://en.wikipedia.org/wiki/Insertion_sort), which like bubble sort is also `O(n^2)`, but is efficient at placing new values into an already-sorted list.
 
@@ -113,7 +119,7 @@ end while
 ```
 
 
-## Version 5 - Quicksort (optional)
+## Part 5 - Quicksort
 
 [Quicksort](https://en.wikipedia.org/wiki/Quicksort) is one of the most efficient sorting algorithms. It works by swapping elements on either side of a pivot value.
 

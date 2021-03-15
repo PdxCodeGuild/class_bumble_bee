@@ -45,7 +45,7 @@ Stub:
 ```python
 class Stack:
   def __init__(self):
-    self.root = None
+    self.top = None
   def push(self, element): # insert an element at the start (new root)
     ...
   def pop(self): # remove an element from the start (the root becomes the next node)

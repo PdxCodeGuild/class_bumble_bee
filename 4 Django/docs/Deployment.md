@@ -2,17 +2,17 @@
 
 # Deployment
 
-1. [Hosting Services](#hosting-services)
-   1. [Examples](#examples)
-   2. [SaaS vs PaaS vs IaaS](#saas-vs-paas-vs-iaas)
-   3. [Domain Names](#domain-names)
-   4. [DNS](#dns)
-   5. [HTTPS](#https)
-2. [Deploying Django](#deploying-django)
-   1. [Deploying with PythonAnywhere](#deploying-with-pythonanywhere)
-   2. [Deploying with Heroku](#deploying-with-heroku)
-   3. [Deploying with AWS](#deploying-with-aws)
-   4. [Deploying with DigitalOcean](#deploying-with-digitalocean)
+- [Hosting Services](#hosting-services)
+  - [Examples](#examples)
+  - [SaaS vs PaaS vs IaaS](#saas-vs-paas-vs-iaas)
+  - [Domain Names](#domain-names)
+  - [DNS](#dns)
+  - [HTTPS](#https)
+- [Deploying Django](#deploying-django)
+  - [Deploying with PythonAnywhere](#deploying-with-pythonanywhere)
+  - [Deploying with Heroku](#deploying-with-heroku)
+  - [Deploying with AWS](#deploying-with-aws)
+  - [Deploying with DigitalOcean](#deploying-with-digitalocean)
 
 ## Hosting Services
 
@@ -49,6 +49,13 @@ Most hosting services will give your website a default domain name, but if you w
 
 ### DNS
 
+
+|Type|Description|Function|
+|--- |--- |--- |
+|A|Address record|Returns a 32-bit IPv4 address, most commonly used to map hostnames to an IP address of the host, but it is also used for DNSBLs, storing subnet masks in RFC 1101, etc.|
+|AAAA|IPv6 address record|Returns a 128-bit IPv6 address, most commonly used to map hostnames to an IP address of the host.|
+|CNAME|Canonical name record|Alias of one name to another: the DNS lookup will continue by retrying the lookup with the new name.|
+|TXT|Text record|Originally for arbitrary human-readable text in a DNS record. Since the early 1990s, however, this record more often carries machine-readable data, such as specified by RFC 1464, opportunistic encryption, Sender Policy Framework, DKIM, DMARC, DNS-SD, etc.|
 
 
 ### HTTPS

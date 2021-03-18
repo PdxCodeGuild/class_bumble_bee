@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:title="post.title"
+            v-bind:body="post.body"
+        ></blog-post>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                posts: [
+                    { id: 1, title: 'My journey with Vue', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum sem et tortor auctor tempor. Nulla a dui tempor, eleifend libero eu, ornare mauris. Maecenas efficitur sem ac ante semper, in dictum tortor pretium. Maecenas a diam in odio feugiat ullamcorper. Aliquam a sapien id libero lacinia porta. Ut posuere finibus posuere. Suspendisse vel urna diam. Duis lobortis eleifend sem a tristique.' },
+                    { id: 2, title: 'Blogging with Vue', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum sem et tortor auctor tempor. Nulla a dui tempor, eleifend libero eu, ornare mauris. Maecenas efficitur sem ac ante semper, in dictum tortor pretium. Maecenas a diam in odio feugiat ullamcorper. Aliquam a sapien id libero lacinia porta. Ut posuere finibus posuere. Suspendisse vel urna diam. Duis lobortis eleifend sem a tristique.' },
+                    { id: 3, title: 'Why Vue is so fun', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque bibendum sem et tortor auctor tempor. Nulla a dui tempor, eleifend libero eu, ornare mauris. Maecenas efficitur sem ac ante semper, in dictum tortor pretium. Maecenas a diam in odio feugiat ullamcorper. Aliquam a sapien id libero lacinia porta. Ut posuere finibus posuere. Suspendisse vel urna diam. Duis lobortis eleifend sem a tristique.' }
+                ]
+            },
+            components: {
+                'blog-post': {
+                    props: ['title', 'body'],
+                    template: '<div><h3>{{ title }}</h3><p>{{ body }}</p></div>'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
